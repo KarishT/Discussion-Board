@@ -1,0 +1,37 @@
+<div ng-controller = "sessionController">
+  welcome {{sessionUsers.user}}
+
+<body>
+  <div ng-controller = "topicController">
+
+  <input type="text" ng-model="search" value="Search">
+  <table>
+    <thead>
+      <th>Category</th>
+      <th>Topic</th>
+      <th>UserName</th>
+      <th>Posts</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat = "topic in topics | orderBy: '-createdAt' | filter: search">
+        <td> {{topic.catname}} </td>
+        <td><a href="#topic/{{topic._id}}">{{topic.topic}}</a></td>
+        <td> <a href="#user/{{topic._user}}">{{topic._user.user}}</a></td>
+        <td> 4 </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Add a new Topic</h3>
+  <form ng-submit= "addTopic()">
+    <input type="text" ng-model="newTopic.topic" placeholder="Topic">
+    <textarea ng-model="newTopic.descrip" rows="8" cols="40" placeholder="Description"></textarea>
+    <select ng-model = "newTopic.catname" val>
+      <option selected = "{{category.catname}" ng-repeat = "category in categories">{{category.catname}}</option>
+    </select>
+    <input type="submit" name="buname" value="Submit">
+  </form>
+</body>
+
+  </div>
+</div>
