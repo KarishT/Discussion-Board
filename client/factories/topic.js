@@ -14,7 +14,7 @@ app.factory('topicFactory', function($http, $location){
   };
 
   factory.oneTopic = function(idobj, cb){
-    $http.get('/topic/one/' + 'idobj').success(function(output){
+    $http.get('/topic/one/' + idobj).success(function(output){
       cb(output);
     })
   };

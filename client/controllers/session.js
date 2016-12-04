@@ -11,7 +11,6 @@ app.controller('sessionController', function($scope, sessionFactory, $route){
 		$scope.sessionUsers = data;
 	});
 
-  console.log($scope.sessionUsers);
   sessionFactory.getCategory(function(data){
     $scope.categories = data;
   });

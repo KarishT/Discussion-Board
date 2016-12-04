@@ -5,7 +5,6 @@ module.exports = (function(){
   return{
     addTopic: function(req,res){
       var topic = new Topic(req.body);
-      console.log(req.session.user);
       topic._user = req.session.user;
       topic.save(function(err, topic){
         if(err){
@@ -29,15 +28,22 @@ module.exports = (function(){
     },
 
     oneTopic: function(req,res){
-      console.log(req.params);
-      Topic.findOne({_id: req.params.id}, function(err, data){
+      console.log(req.params,"before");
+      if(req.params.id === undefined){
+      }
+      else {
+
+
+      Topic.findOne({_id: req.params.id}).populate('_user').exec(function(err, data){
+        console.log("hi");
         if(err){
-          console.log(err);
+          console.log(err,"witheerr");
         }
         else {
           res.json(data);
         }
       })
+    }
     },
 
   }

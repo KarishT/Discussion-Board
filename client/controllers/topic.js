@@ -14,9 +14,10 @@ app.controller('topicController', function($scope, topicFactory, $route, $routeP
     $scope.topics = data;
   });
 
+  if($routeParams.id){
   topicFactory.oneTopic($routeParams.id, function(data){
     $scope.oneTopics = data;
-  });
-  console.log($routeParams);
+  })
+};
 
   })

@@ -1,12 +1,29 @@
 <a href="#/dashboard">Dashboard</a>
 <a href="#/">Logout</a>
+<div ng-controller = "sessionController">
+  <div ng-controller = "topicController">
+  {{oneTopics._user.user}} posted a topic:
+  <p> {{oneTopics.topic}} </p>
+  <p>  {{oneTopics.descrip}} </p>
+  <h4>Post your answer here</h4>
+    <div ng-controller = "postController">
+      <textarea ng-model="newPost.post" rows="8" cols="40"></textarea>
+      <input type="submit" name="bbname" value="Post" ng-click= 'addPost(oneTopics._id)'>
+      <hr>
+      <div>
+        <a href="#">{{post._user.user}}:</a> {{post.post}} <br>
+        <textarea ng-model="newComment.com" rows="8" cols="40"></textarea>
+        <input type="submit" name="butname" value="Comment">
+      </div>
 
-<div ng-controller = "topicController">
-  {{oneTopics}}
-{{oneTopics._user.user}} posted a topic:
-
-<p> {{oneTopics.topic}} </p>
-<p>  {{oneTopics.descrip}} </p>
 
 
+
+
+
+
+
+
+    </div>
+  </div>
 </div>

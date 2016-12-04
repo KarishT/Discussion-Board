@@ -1,5 +1,6 @@
 var user = require('./../controllers/session.js');
 var topic = require('./../controllers/topic.js');
+var post = require('./../controllers/post.js');
 
 module.exports = function(app){
     app.post('/user/add', function(req,res){
@@ -31,5 +32,13 @@ module.exports = function(app){
     app.get('/topic/one/:id', function(req,res){
       topic.oneTopic(req,res);
     });
+
+    app.post('/add/post', function(req, res){
+      post.addPost(req,res);
+    });
+
+    app.get('/all/post/:id', function(req,res){
+      post.index(req,res);
+    })
 
 };
