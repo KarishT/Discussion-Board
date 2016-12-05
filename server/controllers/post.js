@@ -19,12 +19,12 @@ module.exports = (function(){
 
     index: function(req,res){
       console.log(req.params.id, "heya");
-      Post.find({_id: req.params.id})
+      Post.find({_topic: req.params.id})
       .populate('_user')
-      // .populate('_topic')
+      .populate('_topic')
       .exec(function(err, data){
         if(err){
-          console.log(err,"here");
+          console.log(err);
         }
         else {
           res.json(data);

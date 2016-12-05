@@ -7,9 +7,10 @@ app.controller('postController', function($scope, postFactory,$location, $route,
     $route.reload();
   };
 
-  if($routeParams){
+  if($routeParams.id){
   postFactory.index($routeParams.id, function(data){
     $scope.posts = data;
+    console.log(data);
   })
 };
 

@@ -10,10 +10,12 @@
       <textarea ng-model="newPost.post" rows="8" cols="40"></textarea>
       <input type="submit" name="bbname" value="Post" ng-click= 'addPost(oneTopics._id)'>
       <hr>
-      <div>
+
+      <div ng-repeat = "post in posts">
         <a href="#">{{post._user.user}}:</a> {{post.post}} <br>
         <textarea ng-model="newComment.com" rows="8" cols="40"></textarea>
-        <input type="submit" name="butname" value="Comment">
+        <input type="submit" name="butname" value="Comment" ng-click= 'addComment(post._id)'>
+        <hr>
       </div>
 
 
