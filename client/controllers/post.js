@@ -1,5 +1,6 @@
 app.controller('postController', function($scope, postFactory,$location, $route, $routeParams){
   $scope.posts = [];
+  $scope.userDetails =[];
 
   $scope.addPost = function(id){
     $scope.newPost._topic = id;
@@ -10,8 +11,9 @@ app.controller('postController', function($scope, postFactory,$location, $route,
   if($routeParams.id){
   postFactory.index($routeParams.id, function(data){
     $scope.posts = data;
-    console.log(data);
   })
 };
+
+
 
 })

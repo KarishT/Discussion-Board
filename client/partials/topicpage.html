@@ -6,17 +6,24 @@
   <p> {{oneTopics.topic}} </p>
   <p>  {{oneTopics.descrip}} </p>
   <h4>Post your answer here</h4>
-    <div ng-controller = "postController">
+  <div ng-controller = "postController">
       <textarea ng-model="newPost.post" rows="8" cols="40"></textarea>
       <input type="submit" name="bbname" value="Post" ng-click= 'addPost(oneTopics._id)'>
-      <hr>
-
-      <div ng-repeat = "post in posts">
+  <hr>
+      <div ng-repeat = "post in posts | orderBy: '-createdAt'">
         <a href="#">{{post._user.user}}:</a> {{post.post}} <br>
-        <textarea ng-model="newComment.com" rows="8" cols="40"></textarea>
+
+          <div ng-repeat = "com in post._com | orderBy: '-createdAt'">
+          &nbsp;  &nbsp;  &nbsp; <a href="#">{{com._user.user}}:</a> {{com.com}}
+          </div>
+
+      <div ng-controller = "commentController">
+        &nbsp;  &nbsp;  &nbsp;<textarea ng-model="newComment.com" rows="6" cols="20"></textarea>
         <input type="submit" name="butname" value="Comment" ng-click= 'addComment(post._id)'>
         <hr>
       </div>
+
+  </div>
 
 
 

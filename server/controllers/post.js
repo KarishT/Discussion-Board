@@ -18,17 +18,21 @@ module.exports = (function(){
     },
 
     index: function(req,res){
-      console.log(req.params.id, "heya");
       Post.find({_topic: req.params.id})
       .populate('_user')
       .populate('_topic')
+      .populate('_com')
       .exec(function(err, data){
-        if(err){
-          console.log(err);
-        }
-        else {
-          res.json(data);
-        }
+        Post.populate(data, {path:'_com._user',model:'User'}, function(err, data){
+          if(err){
+            console.log(err);
+          }
+          else {
+            res.json(data);
+          }
+
+        })
+
       })
     },
 

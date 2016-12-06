@@ -1,6 +1,7 @@
 var user = require('./../controllers/session.js');
 var topic = require('./../controllers/topic.js');
 var post = require('./../controllers/post.js');
+var comment = require('./../controllers/comment.js');
 
 module.exports = function(app){
     app.post('/user/add', function(req,res){
@@ -39,6 +40,11 @@ module.exports = function(app){
 
     app.get('/all/post/:id', function(req,res){
       post.index(req,res);
-    })
+    });
+
+    app.post('/add/com', function(req,res){
+      console.log('routes', req.body);
+      comment.addComment(req,res);
+    });
 
 };

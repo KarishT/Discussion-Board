@@ -35,7 +35,6 @@ module.exports = (function(){
 
 
       Topic.findOne({_id: req.params.id}).populate('_user').exec(function(err, data){
-        console.log("hi");
         if(err){
           console.log(err,"witheerr");
         }

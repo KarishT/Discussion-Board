@@ -15,7 +15,7 @@ app.controller('sessionController', function($scope, sessionFactory, $route){
     $scope.categories = data;
   });
 
-
+  
 
 
 
