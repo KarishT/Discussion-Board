@@ -1,20 +1,29 @@
 var mongoose = require('mongoose');
 var Topic = mongoose.model('Topic');
+var User = mongoose.model('User');
+var Comment = mongoose.model('Comment');
 
 module.exports = (function(){
   return{
     addTopic: function(req,res){
-      var topic = new Topic(req.body);
-      topic._user = req.session.user;
-      topic.save(function(err, topic){
-        if(err){
-          console.log(err);
-        }
-        else {
-          res.json(topic);
-        }
+      User.findOne({_id: req.session.user}, function(err, user){
+        var topic = new Topic(req.body);
+        topic._user = req.session.user;
+        topic.save(function(err,data){
+          user._topic.push(topic);
+          user.topicCount += 1;
+          user.save(function(err, data){
+            if(err){
+              console.log(err);
+            }
+            else {
+              res.json(topic);
+            }
+          })
+        })
       })
     },
+
 
     index: function(req,res){
       Topic.find({}).populate('_user').exec(function(err, data){

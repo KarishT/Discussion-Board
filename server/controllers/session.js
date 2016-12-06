@@ -5,8 +5,7 @@ var Category = mongoose.model('Category');
 module.exports= (function(){
   return{
     addUser: function(req,res){
-
-      User.findOne({name: req.body.user}, function(err, user){
+      User.findOne({user: req.body.user}, function(err, user){
         if(!user){
           var user = new User(req.body);
           user.save(function(err, user){
@@ -57,9 +56,17 @@ module.exports= (function(){
       })
     },
 
-
-
-
+    userDetails: function(req,res){
+      User.findOne({_id: req.params.id}, function(err, data){
+        if(err){
+          console.log(err);
+        }
+        else {
+          console.log(data, "userinfo");
+          res.json(data);
+        }
+      })
+    },
 
   }
 })();

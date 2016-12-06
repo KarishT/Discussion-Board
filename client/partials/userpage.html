@@ -1,15 +1,17 @@
 <a href="#/dashboard">Dashboard</a>
 <a href="#/">Logout</a>
 
-<div ng-controller = "postController">
+<div ng-controller = "sessionController">
 
 
-  {{topic._user.user}}
+  {{userInfo.user}} Posted: {{userInfo.topicCount}}
+  topics <br>
+  {{userInfo.postCount}} posts <br>
+  and {{userInfo.comCount}} comments
 
-  Posted:
-  topics
-  posts,
-  and comments
+
+
+
 
 
 

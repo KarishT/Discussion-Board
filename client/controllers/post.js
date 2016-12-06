@@ -14,6 +14,14 @@ app.controller('postController', function($scope, postFactory,$location, $route,
   })
 };
 
+  $scope.upVote = function(postid){
+    postFactory.upVote(postid);
+    $route.reload();
+  };
 
+  $scope.downVote = function(postid){
+    postFactory.downVote(postid);
+    $route.reload();
+  };
 
 })

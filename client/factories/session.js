@@ -23,7 +23,13 @@ app.factory('sessionFactory', function($http, $location){
     })
   };
 
-  
+  factory.userDetails = function(id,cb){
+    $http.get('/userinfo/' + id).success(function(output){
+      cb(output);
+    })
+  };
+
+
 
   return factory;
 })

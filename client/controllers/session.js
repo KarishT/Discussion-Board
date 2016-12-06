@@ -1,6 +1,6 @@
-app.controller('sessionController', function($scope, sessionFactory, $route){
+app.controller('sessionController', function($scope, $routeParams,sessionFactory, $route){
   $scope.categories = [];
-
+  $scope.userInfo = [];
 
 
   $scope.addUser = function(){
@@ -15,7 +15,12 @@ app.controller('sessionController', function($scope, sessionFactory, $route){
     $scope.categories = data;
   });
 
-  
+  if($routeParams.id) {
+    sessionFactory.userDetails($routeParams.id, function(data){
+      $scope.userInfo = data;
+    })
+  }
+
 
 
 

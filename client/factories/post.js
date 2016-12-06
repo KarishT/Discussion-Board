@@ -12,6 +12,18 @@ app.factory('postFactory', function($http){
     })
   };
 
+  factory.upVote = function(postid){
+    $http.get('/upVote/' + postid).success(function(){
+
+    })
+  };
+
+  factory.downVote = function(postid){
+    $http.get('/downVote/' + postid).success(function(){
+
+    })
+  };
+
   return factory;
 
 })

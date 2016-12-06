@@ -13,6 +13,10 @@ module.exports = function(app){
       user.checkSess(req,res);
     });
 
+    app.get('/userInfo/:id', function(req,res){
+      user.userDetails(req,res);
+    });
+
     app.get('/logout', function(req, res){
   		user.logout(req, res)
   	});
@@ -45,6 +49,14 @@ module.exports = function(app){
     app.post('/add/com', function(req,res){
       console.log('routes', req.body);
       comment.addComment(req,res);
+    });
+
+    app.get('/upVote/:id', function(req,res){
+      post.upVote(req,res);
+    });
+
+    app.get('/downVote/:id', function(req,res){
+      post.downVote(req,res);
     });
 
 };
