@@ -54,7 +54,11 @@ module.exports = (function(){
     },
 
     upVote : function(req,res){
-      Post.findOne({_id: req.params.id}, function(err, post){
+
+        Post.findOne({_id: req.params.id}, function(err, post){
+          console.log(req.session.user._id, "session");
+          console.log(post._user, "post");
+
         post.upVote += 1;
         post.save(function(err, data){
           if(err){
@@ -64,7 +68,10 @@ module.exports = (function(){
             res.json(data);
           }
         })
+      
       })
+
+
     },
 
     downVote : function(req,res){
